@@ -1,3 +1,6 @@
+require_relative 'readInput'
+include ReadInput
+
 class DrivingHistory
   require_relative 'motorist'
 
@@ -5,12 +8,14 @@ class DrivingHistory
     @motorists = Array.new
   end
 
+  attr_reader :motorists
+
   def addMotorist(name)
     @motorists.push Motorist.new(name)
   end
 
   def addTrip(motoristName, startTime, endTime, miles)
-    motorist = @motorists.find { |motorist| motorist.name === motoristName}
+    motorist = @motorists.find {|motorist| motorist.name === motoristName}
     averageSpeedOfTrip = calculateSpeed(endTime, startTime, miles)
 
     if averageSpeedOfTrip.between?(5, 100)
@@ -26,7 +31,7 @@ class DrivingHistory
 
   def calculateOutput
     @motorists.sort_by!(&:milesDriven).reverse!
-    @motorists.each { |motorist|
+    @motorists.each {|motorist|
       trips = motorist.trips
       totalSpeed = trips.map(&:speed).inject(0, :+)
       totalMiles = trips.map(&:miles).inject(0, :+)
@@ -40,20 +45,6 @@ end
 
 drivingHistory = DrivingHistory.new
 
-def readInput(drivingHistory)
-  text = File.open('input.txt').read
-  text.each_line do |line|
-    commands = line.to_s.split ' '
-    if commands[0] === 'Driver'
-      drivingHistory.addMotorist commands[1]
-    elsif commands[0] === 'Trip'
-      drivingHistory.addTrip(commands[1], commands[2], commands[3], commands[4])
-    else
-      puts "#{commands[0]} is not a valid command"
-    end
-  end
-end
-
-readInput(drivingHistory)
+ReadInput::readInput(drivingHistory)
 
 drivingHistory.calculateOutput

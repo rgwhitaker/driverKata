@@ -1,33 +1,26 @@
-require_relative "driving_history"
+require_relative 'driving_history'
+require_relative 'readInput'
 require 'test/unit'
+include ReadInput
 
 class TestDrivingHistory < Test::Unit::TestCase
 
   def setup
-    @driverList = DrivingHistory.addDriver('Rob')
+    @drivingHistory = DrivingHistory.new
+    ReadInput::readInput(@drivingHistory)
+    @output = @drivingHistory.calculateOutput
   end
 
-  def testInitialize
-    # accept a file from the command line
-    # assert_throws( Exception ) { DrivingHistory.new(input.txt)}
-    # assert_nothing_thrown( Exception ) { DrivingHistory.new(input.txt)}
-  end
-
-  def testAddDriver
-    assert_nothing_thrown( Exception ) { DrivingHistory.addDriver('Rob')}
-    # register a new driver
+  def testAddMotorist
+    assert_nothing_thrown( Exception ) { @drivingHistory.addMotorist 'Rob' }
   end
 
   def testAddTrip
-    # record a trip attribute to an existing driver
-    # return exception if driver unknown
-    # trip attribute should contain start time, stop time and miles driven
-    # time must be in hours:minutes format
-    # discard any trips that average a speed of less than 5mph
-    # discard any trips that average a speed of greater than 100mph
+    assert_nothing_thrown( Exception ) { @drivingHistory.addTrip 'Natalie', '04:32', '07:00', '75' }
   end
 
   def testCalculateOutput
+    @output
     # report contains each driver from input
     # total miles driven for each driver
     # average speed for each driver
