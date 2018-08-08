@@ -1,12 +1,11 @@
 class Trip
-  require 'date'
   require 'time'
 
   def initialize(startTime, endTime, miles)
     @startTime = startTime
     @endTime = endTime
-    @miles = miles.to_i
-    @speed = calculateSpeed
+    @miles = miles.to_f.round
+    @speed = calculateSpeed(@endTime, @startTime, @miles).to_f
   end
 
   attr_reader :startTime
@@ -15,9 +14,9 @@ class Trip
   attr_reader :speed
 
   private
-  def calculateSpeed
-    duration = (Time.parse(@endTime) - Time.parse(@startTime)) / 3600
-    return (@miles.to_i / duration)
+  def calculateSpeed(endTime, startTime, miles)
+    duration = (Time.parse(endTime) - Time.parse(startTime)) / 3600
+    return (miles.to_f / duration)
   end
 
 end
