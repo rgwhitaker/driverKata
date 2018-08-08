@@ -14,6 +14,4 @@ class Motorist
   def updateMilesDriven(miles)
     @milesDriven += miles.to_f.round
   end
-
-
 end

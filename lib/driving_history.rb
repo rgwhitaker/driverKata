@@ -2,7 +2,7 @@ require_relative '../readInput'
 include ReadInput
 
 class DrivingHistory
-  require_relative 'lib/motorist'
+  require_relative 'motorist'
 
   def initialize
     @motorists = Array.new
