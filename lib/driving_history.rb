@@ -1,8 +1,8 @@
-require_relative 'readInput'
+require_relative '../readInput'
 include ReadInput
 
 class DrivingHistory
-  require_relative 'motorist'
+  require_relative 'lib/motorist'
 
   def initialize
     @motorists = Array.new

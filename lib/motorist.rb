@@ -1,6 +1,10 @@
 class Motorist
   require_relative 'trip'
 
+  attr_reader :name
+  attr_reader :trips
+  attr_reader :milesDriven
+
   def initialize(name)
     @name = name
     @trips = Array.new
@@ -11,8 +15,5 @@ class Motorist
     @milesDriven += miles.to_f.round
   end
 
-  attr_reader :name
-  attr_reader :trips
-  attr_reader :milesDriven
 
 end
