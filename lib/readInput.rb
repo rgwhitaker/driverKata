@@ -1,6 +1,6 @@
 module ReadInput
   def readInput(drivingHistory)
-    text = File.open('input.txt').read
+    text = ARGV.empty? ? File.open('input.txt').read : File.open(ARGV[0])
     text.each_line do |line|
       commands = line.to_s.split ' '
       if commands[0] === 'Driver'

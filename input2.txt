@@ -1,0 +1,13 @@
+Driver Dan
+Driver Alex
+Driver Bob
+Driver Rob
+Driver Natalie
+Trip Dan 07:15 07:45 17.3
+Trip Dan 06:12 06:32 21.8
+Trip Alex 12:01 13:16 42.0
+Trip Rob 09:00 14:11 101.7
+Trip Rob 09:00 14:11 101.7
+Trip Natalie 07:00 08:0 14.0
+Trip Natalie 16:05 18:00 41.7
+Trip Natalie 03:54 06:51 200.8

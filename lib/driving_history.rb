@@ -1,14 +1,14 @@
-require_relative '../readInput'
+require_relative '../lib/readInput'
 include ReadInput
 
 class DrivingHistory
   require_relative 'motorist'
 
+  attr_reader :motorists
+
   def initialize
     @motorists = Array.new
   end
-
-  attr_reader :motorists
 
   def addMotorist(name)
     @motorists.push Motorist.new(name)
